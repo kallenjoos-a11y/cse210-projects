@@ -1,5 +1,5 @@
 # cse210-student-template
-This is used for me, Kallen Joos
+This is used for me, Kallen Joos. I find this fascinating so I want to test it one more time
 
 This repository contains the starter code for many different projects. They are arranged as follows:
 
