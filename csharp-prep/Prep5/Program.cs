@@ -47,6 +47,7 @@ class Program
         int birthYear;
 
         DisplayWelcome();
+
         string userName = PromptUserName();
         int userNum = PromptUserNumber();
         PromptUserBirthYear(out birthYear);
