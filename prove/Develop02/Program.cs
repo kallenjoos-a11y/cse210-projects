@@ -33,7 +33,7 @@ class Program
         }
 
         void EntrySelection(){
-        Console.WriteLine("Please select one of the following choices: \n1.Write \n2. Display \n3.Load \n4. Save \n5. Quit");
+        Console.WriteLine("Please select one of the following choices: \n1. Write \n2. Display \n3. Load \n4. Save \n5. Quit");
         Console.Write("What would you like to do? ");
 
         userInput = int.Parse(Console.ReadLine());

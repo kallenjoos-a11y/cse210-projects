@@ -3,12 +3,11 @@ using System.IO;
 
 public class Journal
 {
-    Entry entry = new Entry();
     public List<Entry> _entryList = new List<Entry>();
     Random random = new Random();
 
 
-    public void RandomPrompt()
+    public void RandomPrompt(Entry entry)
     {
         string prompt1 = "Who was the most interesting person I interacted with today?";
         string prompt2 = "What was the best part of my day?";
@@ -23,7 +22,7 @@ public class Journal
         entry._prompt = promptList[randomIndex];
     }
 
-    public void Date()
+    public void Date(Entry entry)
     {
         DateTime theCurrentTime = DateTime.Now;
         entry._date = theCurrentTime.ToShortDateString();
@@ -31,21 +30,42 @@ public class Journal
 
     public void Write()
     {
-        RandomPrompt();
-        Date();
+        Entry entry = new Entry();
+
+        RandomPrompt(entry);
+        Date(entry);
 
         Console.WriteLine(entry._prompt);
         Console.Write("> ");
         entry._response = Console.ReadLine();
 
+        Console.Write("Would you like to add a photo? (y/n) ");
+        string addPhoto = Console.ReadLine();
+        
+        if(addPhoto == "y")
+        {
+            Photo(entry);
+        }
+        else
+        {
+            entry._photo = "not given";
+        }
+    
         _entryList.Add(entry);
+    }
+
+    public void Photo(Entry entry)
+    {
+        Console.WriteLine("Please provide the file path to the picture you would like to add!");
+        Console.Write("> ");
+        entry._photo = Console.ReadLine();
     }
 
     public void Display()
     {
         foreach (Entry e in _entryList)
             {
-                Console.WriteLine($"Date: {e._date} \n Entry: {e._response}");
+                Console.WriteLine($"Date: {e._date} \nEntry: {e._response} \nImage: {e._photo}");
             }
     }
 
@@ -71,7 +91,7 @@ public class Journal
         {
             foreach (Entry e in _entryList)
             {
-                outputFile.WriteLine($"Date: {e._date} \n Entry: {e._response}");
+                outputFile.WriteLine($"Date: {e._date} \nEntry: {e._response} \nImage: {e._photo}");
             }
             
         }
