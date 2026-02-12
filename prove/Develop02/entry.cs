@@ -4,19 +4,19 @@ namespace Develop02;
 
 public class Entry
 {
-    public string Response { get; init; }
-    public string Prompt { get; init; }
-    public DateTime Date { get; init; }
-    public string PhotoPath { get; init; } 
+    public string _response;
+    public string _prompt;
+    public DateTime _date;
+    public string _photoPath;
 
     public override string ToString()
     {
-        return $"Date: {Date.ToShortDateString()}\n Prompt Given: {Prompt} \nEntry: {Response} \nImage: {PhotoPath ?? "Not Given"}";
+        return $"Date: {_date.ToShortDateString()}\n Prompt Given: {_prompt} \nEntry: {_response} \nImage: {_photoPath ?? "Not Given"}";
     }
 
     public string ToCSV()
     {
-       return $"{Response},{Prompt},{Date},{PhotoPath}";
+       return $"{_response},{_prompt},{_date},{_photoPath}";
     }
     public static Entry CreateFromCSV(string csv)
     {
@@ -26,7 +26,7 @@ public class Entry
         DateTime.TryParse(parts[2], out DateTime date);
         string photoPath = parts[3];
     
-        Entry entry = new Entry{Response = response, Date = date, PhotoPath = photoPath, Prompt = prompt};
+        Entry entry = new Entry{_response = response, _date = date, _photoPath = photoPath, _prompt = prompt};
         
         return entry;
     }

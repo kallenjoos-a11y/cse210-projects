@@ -113,7 +113,7 @@ class Program
             photoPath = PromptForPhotoPath();
         }
     
-        Entry entry = new Entry{Response = response, Date = date, PhotoPath = photoPath, Prompt = prompt};
+        Entry entry = new Entry{_response = response, _date = date, _photoPath = photoPath, _prompt = prompt};
         
         return entry;
     }
