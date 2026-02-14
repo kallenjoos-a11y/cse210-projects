@@ -5,11 +5,6 @@ class Reference
     private string _firstVerse;
     private string _lastVerse;
 
-    //public string GetRef()
-    //{
-    
-    //}
-
     public string CombineReference()
     {
         if(_lastVerse == null)

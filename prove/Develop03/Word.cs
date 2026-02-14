@@ -2,33 +2,25 @@ using System.Runtime.InteropServices;
 
 class Word
 {
-    private string[] _word;
     private bool[] _hidden; 
-    private Random _rand = new Random();
+    private Random _rand;
 
-    //public string GetWord() {}
-
-    public void SplitVerse(string verse)
-    {
-        _word = verse.Split(" ");
-        _hidden = new bool[_word.Length];
+    public Word(int length){
+        _hidden = new bool[length];
+        _rand = new Random();
     }
 
-    public string JoinVerse()
-    {
-        return String.Join(" ", _word);
-    }
-
-    public void PickWords()
+    public void PickWords(Scripture s1)
     {
         if (_hidden.Contains(false))
         {
-            if(_hidden.Count(x => !x) < 3)
+            int remaining = _hidden.Count(x => !x);
+            if(remaining < 3)
             {
-                HideWord(_hidden.Count(x => !x));
+                HideWord(s1, remaining);
             } else
             {
-                HideWord(3);
+                HideWord(s1, 3);
             }
         } else
         {
@@ -36,21 +28,21 @@ class Word
         }
     }
 
-    public void HideWord(int wordHide)
+    public void HideWord(Scripture s1, int wordHide)
     {
         for(int i = 0; i < wordHide; i++){
-            int randomIndex = _rand.Next(_word.Length);
-            if(!_hidden[randomIndex]){
-                _word[randomIndex] = FindWordLength(_word[randomIndex].Length);
-                _hidden[randomIndex] = true;
-            } else
-            {
-                i--;
-            }
+            int randomIndex = _rand.Next(_hidden.Length);
+
+            while(_hidden[randomIndex]){
+                randomIndex = _rand.Next(_hidden.Length);
+            } 
+            int wordLength = s1.GetWordLen(randomIndex);
+            s1.SetWord(MakeReplacementHyphens(wordLength), randomIndex);
+            _hidden[randomIndex] = true;
         }
     }
 
-    public string FindWordLength(int length)
+    public string MakeReplacementHyphens(int length)
     {
         string word = "";
 

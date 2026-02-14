@@ -1,12 +1,7 @@
 class Scripture
 {
     private string _scripture;
-
-    public void Display()
-    {
-        //_scripture = JoinVerse();
-        Console.WriteLine("");
-    }
+    private string[] _splitScrip;
 
     public string GetScripture()
     {
@@ -17,4 +12,31 @@ class Scripture
         _scripture = scripture;
     }
 
+    public Scripture() {
+    }
+
+    public void SplitVerse(string verse)
+    {
+        _splitScrip = verse.Split(" ");
+    }
+
+    public string JoinVerse()
+    {
+        return String.Join(" ", _splitScrip);
+    }
+
+    public int GetSplitScripLen()
+    {
+        return _splitScrip.Length;
+    }
+
+    public int GetWordLen(int rand)
+    {
+        return _splitScrip[rand].Length;
+    }
+
+    public void SetWord(string newName, int index)
+    {
+        _splitScrip[index] = newName;
+    }
 }

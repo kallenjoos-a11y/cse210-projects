@@ -1,11 +1,6 @@
-using System;
-using System.ComponentModel.DataAnnotations;
-using System.Runtime.CompilerServices;
-using System.Security.Cryptography;
-
 class Program
 {
-    static Word w1 = new Word();
+    static Word w1;
     static Scripture s1;
     static void Main(string[] args)
     {
@@ -21,11 +16,13 @@ class Program
         Console.WriteLine(combinedRef);
         Console.WriteLine(scripture);
 
-        w1.SplitVerse(scripture);
+        s1.SplitVerse(scripture);
+
+        w1 = new Word(s1.GetSplitScripLen());
 
         while(input != "quit")
         {
-            Console.Write("Press enter to display verse or type quit ");
+            Console.Write("\nPress enter to continue or type 'quit' to finish: ");
             input = Console.ReadLine();
             Display(scripture, combinedRef);
         }
@@ -68,9 +65,9 @@ class Program
 
     public static void Display(string scripture, string reference)
     {
-        w1.PickWords();
+        w1.PickWords(s1);
         Console.Clear();
         Console.WriteLine(reference);
-        Console.WriteLine(w1.JoinVerse());
+        Console.WriteLine(s1.JoinVerse());
     }
 }
