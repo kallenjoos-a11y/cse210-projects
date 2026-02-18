@@ -1,5 +1,3 @@
-using System.Runtime.InteropServices;
-
 class Word
 {
     private bool[] _hidden; 
