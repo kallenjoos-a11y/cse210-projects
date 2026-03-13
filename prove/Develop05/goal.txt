@@ -1,0 +1,5 @@
+TOTAL,10
+Simple,simple,This is so simple,10,True
+Eternal,eternal,this will never end,20
+Checklist,checklist,this will be checked off slowly,30,3,0,0
+Simple,george,this is another simple one,45,True
