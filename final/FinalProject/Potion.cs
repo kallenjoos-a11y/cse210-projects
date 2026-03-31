@@ -1,7 +1,13 @@
 public class Potion : Item
 {
-    public override void Use()
+    private int _health;
+    public Potion(string name, int health) : base(name)
     {
-        //add code
+        _health = health;
+    }
+    public override void Use(Warrior warrior)
+    {
+        warrior.Heal(_health);
+        Console.WriteLine($"You healed {_health} stamina!");
     }
 }

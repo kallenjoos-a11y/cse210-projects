@@ -1,7 +1,12 @@
 public class Sword : Item
 {
-    public override void Use()
+    private int _hitIncrease;
+    public Sword(string name, int hit) : base(name)
     {
-        //add code
+        _hitIncrease = hit;
+    }
+    public override void Use(Warrior warrior)
+    {
+        warrior.SetWeapon(GetName(), _hitIncrease);
     }
 }

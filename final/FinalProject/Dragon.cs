@@ -1,6 +1,6 @@
-public class Goblin : Enemy
+public class Dragon : Enemy
 {
-    public Goblin() : base("Goblin", 30, 6, 3)
+    public Dragon() : base("Dragon", 60, 20, 15)
     {}
 
     public override void Attack(Character target)

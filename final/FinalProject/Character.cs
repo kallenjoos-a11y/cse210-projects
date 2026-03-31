@@ -1,7 +1,7 @@
 public abstract class Character
 {
     private string _name;
-    private int _stamina;
+    protected int _stamina;
     private bool _isAlive;
     private int _maxHit;
     private int _minHit;
@@ -14,19 +14,35 @@ public abstract class Character
         _minHit = minHit;
     }
 
-    public abstract void Attack();
-
-    public virtual bool CheckAlive()
-    {
-        // if (isAlive)
-        // {
-            
-        // }
-        return true;
-    }
+    public abstract void Attack(Character target);
 
     public string GetName()
     {
         return _name;
+    }
+
+    public int GetAttackDamage(Random rand)
+    {
+        return rand.Next(_minHit, _maxHit + 1);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        _stamina -= damage;
+        if (_stamina <= 0)
+        {
+            _stamina = 0;
+            _isAlive = false;
+        }
+    }
+
+    public int GetStamina()
+    {
+        return _stamina;
+    }
+
+    public bool CheckAlive()
+    {
+        return _isAlive;
     }
 }

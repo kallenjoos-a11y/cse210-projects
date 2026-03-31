@@ -43,10 +43,22 @@ class Program
         if(Console.ReadLine().ToLower() == "y")
         {
             Game game = new Game(w);
-            game.GenerateEnemy();
             Console.WriteLine("Congratulations! Your quest will begin immediately. Be wise, I wish you luck, and remember, don't run too fast, but the King's daughter's life is at risk, so don't waste any time or it may be too late... ");
             while(w.CheckAlive() && game.CheckTurns()){
                 game.DoTurn();
+            }
+
+            if (game.Victory)
+            {
+                Console.WriteLine("\nYou have defeated the Dragon King and rescued Princess Buttercup!");
+            }
+            else if (w.CheckAlive())
+            {
+                Console.WriteLine("\nYour quest continues. The princess is still waiting—keep fighting!");
+            }
+            else
+            {
+                Console.WriteLine("\nYou were defeated in battle. The kingdom needs another hero.");
             }
         }
         else
