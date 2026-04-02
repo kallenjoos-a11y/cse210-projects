@@ -63,6 +63,7 @@ class Program
         }
         else
         {
+            Console.WriteLine("Your are kicked out from amoung the warriors and another fills your place. He comes back from his quest, marries the princess and lives happily ever after while you are mocked as the lowest of lows.");
             return;
         }
     }
